@@ -14,7 +14,7 @@ def is_prime(n: int) -> bool:
     if n == 2:
         return True
 
-    for divisor in range(2, n):
+    for divisor in range(2, int(n ** 0.5) + 1):
         if n % divisor == 0:
             return False
 
@@ -32,7 +32,18 @@ nth_fibonacci(9) -> 21
 """
 
 def nth_fibonacci(n: int) -> int:
-    # write your code here
+    if n ==0:
+        return 0
+    elif n == 1:
+        return 1
+
+    fib = [0] * (n + 1)
+    fib[0] = 0
+    fib[1] = 1
+
+    for i in range(2, n + 1):
+        fib[i] = fib[i -1] + fib[i -2]
+    return fib[n]
     pass
 
 """
@@ -45,7 +56,10 @@ factorial(6) -> 720
 """
 
 def factorial(n: int) -> int:
-    # write your code here
+    nfactorial = 1
+    for i in range(2, n + 1):
+        nfactorial *= i
+    return nfactorial
     pass
 
 """
@@ -59,7 +73,13 @@ count_vowels("world") -> 1
 """
 
 def count_vowels(s: str) -> int:
-    # write your code here
+    vowels = "aeiouy"
+    vowels_count = 0
+    for letter in s:
+        for vowel in vowels:
+            if letter == vowel:
+                vowels_count += 1
+    return vowels_count
     pass
 
 """
