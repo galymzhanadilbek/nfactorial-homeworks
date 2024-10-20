@@ -9,7 +9,16 @@ is_prime(10) -> False
 """
 
 def is_prime(n: int) -> bool:
-    # write your code here
+    if n <= 1:
+        return False
+    if n == 2:
+        return True
+
+    for divisor in range(2, n):
+        if n % divisor == 0:
+            return False
+
+    return True
     pass
 
 """
