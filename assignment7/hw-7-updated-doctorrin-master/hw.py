@@ -93,7 +93,12 @@ sum_of_digits(98765) -> 35
 """
 
 def sum_of_digits(n: int) -> int:
-    # write your code here
+    total_sum = 0
+    while n > 0:
+        digit = n % 10
+        total_sum += digit
+        n = n // 10
+    return total_sum
     pass
 
 
@@ -107,7 +112,8 @@ reverse_string("world") -> "dlrow"
 """
 
 def reverse_string(s: str) -> str:
-    # write your code here
+    reversed_s = s[::-1]
+    return reversed_s
     pass
 
 
@@ -122,7 +128,12 @@ sum_of_squares(5) -> 55
 """
 
 def sum_of_squares(n: int) -> int:
-    # write your code here
+    total_sum = 0
+    squares = 0
+    for digit in range(1, n + 1):
+        squares = digit ** 2
+        total_sum += squares
+    return total_sum
     pass
 
 
@@ -137,7 +148,15 @@ collatz_sequence_length(27) -> 112
 """
 
 def collatz_sequence_length(n: int) -> int:
-    # write your code here
+    collatz_len = 0
+    while n > 1:
+        if n % 2 == 0:
+            n = n // 2
+            collatz_len += 1
+        elif n % 2 == 1:
+            n = n * 3 + 1
+            collatz_len += 1
+    return collatz_len + 1
     pass
 
 
@@ -152,7 +171,19 @@ is_leap_year(1900) -> False
 """
 
 def is_leap_year(year: int) -> bool:
-    # write your code here
+    is_leap = False
+
+    if year % 4 == 0:
+        if year % 100 == 0:
+            if year % 400 == 0:
+                is_leap = True
+            else:
+                is_leap = False
+        else:
+            is_leap = True
+    else:
+        is_leap = False
+    return is_leap
     pass
 
 
@@ -167,7 +198,9 @@ count_words("This is a test") -> 4
 """
 
 def count_words(s: str) -> int:
-    # write your code here
+    space = " "
+    word_count = s.count(space)
+    return word_count + 1
     pass
 
 
@@ -183,7 +216,11 @@ is_palindrome("hello") -> False
 """
 
 def is_palindrome(s: str) -> bool:
-    # write your code here
+    palindrome = False
+    if s == s[::-1]:
+        return True
+    else:
+        return False
     pass
 
 """
@@ -198,7 +235,11 @@ sum_of_multiples(20, 7, 11) -> 168
 """
 
 def sum_of_multiples(n: int, x: int, y: int) -> int:
-    # write your code here
+    multiple = 0
+    for i in range(1, n + 1):
+        if i % x == 0 or i % y == 0:
+            multiple += i
+    return multiple
     pass
 
 
@@ -213,7 +254,10 @@ gcd(27, 15) -> 3
 """
 
 def gcd(a: int, b: int) -> int:
-    # write your code here
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a % b)
     pass
 
 
@@ -228,7 +272,12 @@ lcm(6, 8) -> 24
 """
 
 def lcm(a: int, b: int) -> int:
-    # write your code here
+    multiple = max(a, b)
+
+    while True:
+        if multiple % a == 0 and multiple % b == 0:
+            return multiple
+        multiple += 1
     pass
 
 
