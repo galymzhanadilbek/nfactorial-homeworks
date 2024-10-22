@@ -254,10 +254,23 @@ gcd(27, 15) -> 3
 """
 
 def gcd(a: int, b: int) -> int:
-    if b == 0:
-        return a
-    else:
-        return gcd(b, a % b)
+    divisors_a = []
+    divisors_b = []
+
+    for x in range(1, a + 1):
+        if a % x == 0:
+            divisors_a.append(x)
+    for y in range(1, b + 1):
+        if b % y == 0:
+            divisors_b.append(y)
+
+    common_divisors = []
+
+    for i in divisors_a:
+        if i in divisors_b:
+            common_divisors.append(i)
+    gcd = max(common_divisors)
+    return(gcd)
     pass
 
 
@@ -272,12 +285,21 @@ lcm(6, 8) -> 24
 """
 
 def lcm(a: int, b: int) -> int:
-    multiple = max(a, b)
+    cntr_mltpl_a = 1
+    cntr_mltpl_b = 1
 
     while True:
-        if multiple % a == 0 and multiple % b == 0:
-            return multiple
-        multiple += 1
+        mltpl_a = a * cntr_mltpl_a
+        mltpl_b = b * cntr_mltpl_b
+
+        if mltpl_a == mltpl_b:
+            return(mltpl_a)
+            break
+
+        if mltpl_a < mltpl_b:
+            cntr_mltpl_a += 1
+        else:
+            cntr_mltpl_b += 1
     pass
 
 
@@ -294,7 +316,12 @@ count_characters("apple", "p") -> 2
 """
 
 def count_characters(s: str, c: str) -> int:
-    # write your code here
+    counter_c = 0
+
+    for letter in s:
+        if letter == c:
+            counter_c += 1
+    return counter_c
     pass
 
 
@@ -309,7 +336,10 @@ digit_count(4567) -> 4
 """
 
 def digit_count(n: int) -> int:
-    # write your code here
+    counter_n = 0
+    for digit in str(n):
+        counter_n += 1
+    return(counter_n)
     pass
 
 
@@ -324,7 +354,15 @@ is_power_of_two(10) -> False
 """
 
 def is_power_of_two(n: int) -> bool:
-    # write your code here
+    def is_power_of_two(n: int) -> bool:
+        if n <= 0:
+            return False
+
+        while n != 1:
+            if n % 2 == 1:
+                return False
+            n = n // 2
+        return True
     pass
 
 
@@ -339,7 +377,15 @@ sum_of_cubes(4) -> 100
 """
 
 def sum_of_cubes(n: int) -> int:
-    # write your code here
+    cube_n = []
+    for num in range(1, n + 1):
+        cube_n.append(num ** 3)
+
+    n_sum = 0
+    for i in cube_n:
+        n_sum += i
+    return(n_sum)
+
     pass
 
 
@@ -354,7 +400,15 @@ is_perfect_square(10) -> False
 """
 
 def is_perfect_square(n: int) -> bool:
-    # write your code here
+    if n < 0:
+        return False
+    multiplicator_n = 0
+    while multiplicator_n * multiplicator_n < n:
+        multiplicator_n += 1
+    if multiplicator_n * multiplicator_n == n:
+        return True
+    else:
+        return False
     pass
 
 
@@ -368,6 +422,14 @@ is_armstrong_number(153) -> True
 is_armstrong_number(370) -> True
 """
 
+
 def is_armstrong_number(n: int) -> bool:
-    # write your code here
+
+    cntr_digits = len(str(n))
+
+    n_list = [int(x) for x in str(n)]
+
+    power_sum = sum([digit ** cntr_digits for digit in n_list])
+
+    return power_sum == n
     pass
