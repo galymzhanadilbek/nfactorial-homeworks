@@ -73,7 +73,8 @@ count_vowels("world") -> 1
 """
 
 def count_vowels(s: str) -> int:
-    vowels = "aeiouy"
+    s = s.lower()
+    vowels = "aeiou"
     vowels_count = 0
     for letter in s:
         for vowel in vowels:
@@ -93,6 +94,7 @@ sum_of_digits(98765) -> 35
 """
 
 def sum_of_digits(n: int) -> int:
+    n = abs(n)
     total_sum = 0
     while n > 0:
         digit = n % 10
@@ -198,8 +200,10 @@ count_words("This is a test") -> 4
 """
 
 def count_words(s: str) -> int:
+    if s.strip() == "":
+        return 0
     space = " "
-    word_count = s.count(space)
+    word_count = s.strip().count(space)
     return word_count + 1
     pass
 
@@ -353,16 +357,16 @@ is_power_of_two(8) -> True
 is_power_of_two(10) -> False
 """
 
-def is_power_of_two(n: int) -> bool:
-    def is_power_of_two(n: int) -> bool:
-        if n <= 0:
-            return False
 
-        while n != 1:
-            if n % 2 == 1:
-                return False
-            n = n // 2
-        return True
+def is_power_of_two(n: int) -> bool:
+    if n <= 0:
+        return False
+
+    while n != 1:
+        if n % 2 == 1:
+            return False
+        n = n // 2
+    return True
     pass
 
 
