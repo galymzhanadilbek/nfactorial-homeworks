@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "assignment14"
+version = "0.1.0"
+description = ""
+authors = ["galymzhanadilbek <galymzhanadilbek1@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+requests = "^2.32.3"
+flask = "^3.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
